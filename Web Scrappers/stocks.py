@@ -1,3 +1,6 @@
+# This program accepts specific urls from MacroTends (such as https://www.macrotrends.net/stocks/charts/AAPL/apple/stock-price-history), processes this data for company evalution, and has the ability to save this data as a csv file
+
+
 from bs4 import BeautifulSoup
 import requests
 import pandas as pd
