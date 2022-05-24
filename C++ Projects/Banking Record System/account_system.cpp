@@ -184,7 +184,7 @@ int main() {
             exit(0);
             break;
         default:
-            std::cout << "\nEnter corret choice";
+            std::cout << "\nEnter correct choice";
             exit(0);
         }
     }
