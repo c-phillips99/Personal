@@ -3,12 +3,10 @@
 #include <stdio.h>
 #include <windows.h>
 
-char* removeWhiteSpace(char* input)
-{
+char* removeWhiteSpace(char* input) {
     int i, j;
     char* output= input;
-    for (i = 0, j = 0; i < strlen(input); i++,j++)
-    {
+    for (i = 0, j = 0; i < strlen(input); i++,j++) {
         if (input[i]!=' ')
             output[j]=input[i];
         else
