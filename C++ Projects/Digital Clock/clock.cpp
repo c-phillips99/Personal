@@ -7,7 +7,7 @@ char* removeWhiteSpace(char* input)
 {
     int i, j;
     char* output= input;
-    for (i = 0, j = 0; i<strlen(input); i++,j++)
+    for (i = 0, j = 0; i < strlen(input); i++,j++)
     {
         if (input[i]!=' ')
             output[j]=input[i];
@@ -22,16 +22,15 @@ int main() {
     int h, m, c, i;
     int s = 0;
     char amPm[3];
-    char am[3] = "AM";
+    const char *am = "AM";
     char input[5];
 
     std::cout << "Enter time (HH:MM): ";
     std::cin >> input;
-    char* input_stripped = removeWhiteSpace(input);
+    char* inputStripped = removeWhiteSpace(input);
 
     char *ptr;
-    ptr = strtok(input_stripped, ":");
-
+    ptr = strtok(inputStripped, ":");
     h = std::stoi(ptr);
     ptr = strtok (NULL, ":");
     m = std::stoi(ptr);
@@ -40,12 +39,13 @@ int main() {
     std::cout << "Enter AM or PM: ";
     std::cin >> amPm;
 
-    char* amPm_stripped = removeWhiteSpace(amPm);
-    for (int i = 0; i < sizeof(amPm_stripped)/sizeof(amPm_stripped[0])-1; i++) {
-        amPm_stripped[i] &= ~' ';
+    char* amPmStripped = removeWhiteSpace(amPm);
+    int amPmLength = sizeof(amPmStripped) / sizeof(amPmStripped[0]) - 1;
+    for (int i = 0; i < amPmLength - 1; i++) {
+        amPmStripped[i] = toupper(amPmStripped[i]);
     }
 
-    if (strcmp(amPm_stripped, am)) {
+    if (strcmp(amPmStripped, am) == 0) {
         c = 0;
     }
     else {
