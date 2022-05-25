@@ -8,7 +8,7 @@ void displayBoard();
 int main()
 {
     int choice, gameState;
-	int player = 1;
+    int player = 1;
     char mark;
 
     do {
