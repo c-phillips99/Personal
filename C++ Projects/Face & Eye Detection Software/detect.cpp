@@ -80,12 +80,12 @@ void detectAndDraw (Mat& image, CascadeClassifier& faceCascade, CascadeClassifie
 
     // Resize the B/W Image
     resize(grayImage, smallImage, Size(), res, res, INTER_LINEAR);
+    // Add contrast for easier detection
     equalizeHist(smallImage, smallImage);
 
-    // Detects faces of different sizes
+    // Detect faces
     faceCascade.detectMultiScale(smallImage, faces, 1.1, 2, 0 | CASCADE_SCALE_IMAGE, Size (30, 30));
 
-    // Draw circles around faces
     for(size_t i = 0; i < faces.size(); i++)
     {
         Rect r = faces[i];
@@ -93,10 +93,10 @@ void detectAndDraw (Mat& image, CascadeClassifier& faceCascade, CascadeClassifie
         std::vector<Rect> nestedObjects;
         Point center;
         int radius;
-        // Drawing tool color
         Scalar color = Scalar (255, 255, 0);
         double aspectRatio = (double) r.width / r.height;
-
+        
+        // Draw circles / rectangles around faces
         if (0.75 < aspectRatio && aspectRatio < 1.3)
         {
             center.x = cvRound((r.x + r.width * 0.5) * scale);
@@ -117,7 +117,7 @@ void detectAndDraw (Mat& image, CascadeClassifier& faceCascade, CascadeClassifie
         // Detect eyes
         eyeCascade.detectMultiScale(smallImageROI, nestedObjects, 1.1, 2, 0 | CASCADE_SCALE_IMAGE, Size(30, 30));
 
-        // Draw circles on eyes
+        // Draw circles around eyes
         for (size_t j = 0; j < nestedObjects.size(); j++)
         {
             Rect nestedR = nestedObjects[j];
