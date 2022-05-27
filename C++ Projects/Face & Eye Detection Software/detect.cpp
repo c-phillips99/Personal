@@ -112,7 +112,8 @@ void detectAndDraw (Mat& image, CascadeClassifier& faceCascade, CascadeClassifie
 
         if (eyeCascade.empty())
             continue;
-
+        
+        // Focus on face
         smallImageROI = smallImage(r);
         // Detect eyes
         eyeCascade.detectMultiScale(smallImageROI, nestedObjects, 1.1, 2, 0 | CASCADE_SCALE_IMAGE, Size(30, 30));
