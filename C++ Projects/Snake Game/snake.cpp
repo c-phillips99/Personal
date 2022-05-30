@@ -222,7 +222,8 @@ void clearScreen()
 // Creates arena position in ground array
 void initGround()
 {
-	for (int i = 0; i <= MAX; i++)
+	int i;
+	for (i = 0; i <= MAX; i++)
 		for (int j = 0; j <= MAX; j++)
 			ground[i][j] = NOTHING;
 	
@@ -232,7 +233,7 @@ void initGround()
 		ground[HEIGHT + 1][j] = HORZ_WALL;
 	}
 
-	for (int i = 0; i <= HEIGHT+1; i++)
+	for (i = 0; i <= HEIGHT+1; i++)
 	{
 		ground[i][0] = VERT_WALL;
 		ground[i][WIDTH+1] = VERT_WALL;
