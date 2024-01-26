@@ -9,7 +9,8 @@ from tabulate import tabulate
 mode = ""
 
 def get_data(home_link, route):
-    website = requests.get(home_link + route)
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36'}
+    website = requests.get(home_link + route, headers=headers)
     data_dict = {}
     if website.ok:
         soup = BeautifulSoup(website.content, 'html.parser')
